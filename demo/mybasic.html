@@ -47,13 +47,13 @@
           <div class="col-md-12">
             <h4>Selector-Based Filter</h4>
             <div class="btn-group" opt-kind ok-key="filter" >
-              <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
-              <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
+              <button type='button' class='btn btn-default'   onClick="showAll()"  ok-sel="*">Show All</button>
+              <button type='button' class='btn btn-default'  ok-sel=".purple">Purple</button>
               <button type='button' class='btn btn-default' ok-sel=".orange">Orange</button>
-              <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
+              <button type='button' class='btn btn-default'  ok-sel=".blue">Blue</button>
               <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
-              <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
-              <button type='button' class='btn btn-default' ok-sel="#extra">Extra Only</button>
+              <button type='button' class='btn btn-default'   ok-sel=":not(.blue)">Not Blue</button>
+              <button type='button' class='btn btn-default'   ok-sel="#extra">Extra Only</button>
             </div>
           </div>
         </div>
@@ -97,6 +97,11 @@
 
 
   <script>
+
+    var showAll = function(){
+        var s=angular.element( document.querySelector('#isotopeContainer')).scope();
+
+    }
     var addToList = function(number) {
       var s=angular.element( document.querySelector('#isotopeContainer')).scope();
       s.count = s.count || 0;
@@ -120,6 +125,8 @@
     };
   </script>
   <script src="scripts/vendor/angular.min.js"></script>
+  <script src="scripts/vendor/ui-bootstrap.min.js"></script>
+  <script src="scripts/vendor/ui-bootstrap-tpls.min.js"></script>
   <script src="scripts/wilson-angular-isotope.js"></script>
   <script src="scripts/myapp.js"></script>
 </body>

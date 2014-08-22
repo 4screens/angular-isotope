@@ -347,12 +347,15 @@
                     optKey = optionSet.attr("ok-key");
 
                     determineActiveClass = function() {
+                        var optionSetKids = optionSet.children();
+
                         activeClass = attrs.okActiveClass;
                         if (!activeClass) {
-                            activeClass = optionSet.find(".selected").length ? "selected" : "active";
+                            activeClass = optionSetKids.find(".selected").length ? "selected" : "active";
                         }
                         activeSelector = "." + activeClass;
-                        active = optionSet.find(activeSelector);
+
+                        active = optionSetKids.find(activeSelector);
                     };
 
                     createSortByDataMethods = function(optionSet) {
@@ -394,12 +397,19 @@
 
                     doOption = function(event) {
                         var selItem;
+                        var optionSetKids;
                         event.preventDefault();
                         selItem = angular.element(event.target);
                         if (selItem.hasClass(activeClass)) {
                             return false;
                         }
-                        optionSet.find(activeSelector).removeClass(activeClass);
+
+                        var optionSetKids = optionSet.children();
+                        angular.forEach(optionSetKids, function(element) {
+                               if(angular.element(element).hasClass(activeClass)){
+                                   angular.element(element).removeClass(activeClass);
+                               }
+                        });
                         selItem.addClass(activeClass);
                         emitOption(createOptions(selItem));
                         return false;
