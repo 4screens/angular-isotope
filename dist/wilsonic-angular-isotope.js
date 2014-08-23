@@ -173,12 +173,10 @@
                     var options, sortDataArray;
                     options = angular.element(elem);
                     var arr =[];
-                    for( var i in options ) {
-                        if (options.hasOwnProperty(i)){
-                            arr.push(options[i]);
-                        }
-                    }
-                    sortDataArray = reduce(arr.map($scope.optSortData));
+                    angular.forEach(options, function(item){
+                        arr.push(item);
+                    });
+                    sortDataArray = reduce(angular.element(arr.map($scope.optSortData)));
                     return sortDataArray;
                 };
                 reduce = function(list) {
@@ -238,7 +236,24 @@
                             return text;
                         }
                     };
-                    item = angular.element($elem).find(selector);
+
+                    var modifiedSelector = selector;
+                    switch (selector.charAt(0)) {
+                        case "#":
+                        case ".":
+                            modifiedSelector = selector.slice(1,selector.length);
+                            break;
+                        case "[":
+                            modifiedSelector = selector.replace("[", "").replace("]", "")
+                            break;
+                    }
+                    var modifiedItem = angular.element($elem).find(selector);
+                    angular.forEach(angular.element($elem).children(), function(element) {
+                         if(angular.element(element).hasClass(modifiedSelector)){
+                             modifiedItem = angular.element(element);
+                         }
+                     });
+                    item = modifiedItem;
                     text = getText($elem, item, selector);
                     val = toType(text, type);
                     if (evaluate) {
@@ -313,6 +328,9 @@
                 };
             }
         ])
+        /*
+         TODO: could be nested so it is hard to walk the dom: needs work
+         */
         .directive("isoSortbyData", function() {
             return {
                 restrict: "A",
@@ -355,7 +373,13 @@
                         }
                         activeSelector = "." + activeClass;
 
-                        active = optionSetKids.find(activeSelector);
+                        var activeElem = optionSetKids.find(activeSelector);
+                        angular.forEach(optionSetKids, function(element) {
+                            if(angular.element(element).hasClass(activeClass)){
+                                activeElem = angular.element(element);
+                            }
+                        });
+                        active = activeElem
                     };
 
                     createSortByDataMethods = function(optionSet) {

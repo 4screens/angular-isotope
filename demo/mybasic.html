@@ -47,7 +47,7 @@
           <div class="col-md-12">
             <h4>Selector-Based Filter</h4>
             <div class="btn-group" opt-kind ok-key="filter" >
-              <button type='button' class='btn btn-default'   onClick="showAll()"  ok-sel="*">Show All</button>
+              <button type='button' class='btn btn-default active'  ok-sel="*">Show All</button>
               <button type='button' class='btn btn-default'  ok-sel=".purple">Purple</button>
               <button type='button' class='btn btn-default' ok-sel=".orange">Orange</button>
               <button type='button' class='btn btn-default'  ok-sel=".blue">Blue</button>
@@ -75,19 +75,19 @@
 
         <!-- ISOTOPECONTAINER -->
         <div class="row">
-          <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
-            <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}}" onClick="removeItem(this)">
-               <div class="symbol">{{x.name}}</div>
-               <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
-               <div class="number" number="{{x.number}}">{{x.number}}</div>
-            </li>
+              <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
+                <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}} isotope-item" onClick="removeItem(this)">
+                   <div class="symbol">{{x.name}}</div>
+                   <div class="date" date="{{x.date}}">{{x.date | date}}</div>
+                   <div class="number" number="{{x.number}}">{{x.number}}</div>
+                </li>
 
-            <li id="extra" isotope-item class="kindling green">
-               <div class="symbol">extra</div>
-               <div class="weight" date="1360313309421">{{'1360313309421' | date}}</div>
-               <div class="number" number="20">Twenty</div>
-            </li>
-           </ul>
+                <li id="extra" isotope-item class="kindling green">
+                   <div class="symbol">extra</div>
+                   <div class="date" date="1360313309421">{{'1360313309421' | date}}</div>
+                   <div class="number" number="20">Twenty</div>
+                </li>
+              </ul>
         </div>
       </div>
     </div>
@@ -97,11 +97,6 @@
 
 
   <script>
-
-    var showAll = function(){
-        var s=angular.element( document.querySelector('#isotopeContainer')).scope();
-
-    }
     var addToList = function(number) {
       var s=angular.element( document.querySelector('#isotopeContainer')).scope();
       s.count = s.count || 0;
@@ -113,21 +108,31 @@
       addToList(s.lastNumber.shift());
     };
     var removeItem = function(elem) {
+
       if (!Array.prototype.filter) return;
       var s=angular.element( document.querySelector('#isotopeContainer')).scope();
-      var number = angular.element(elem).find(".number").attr("number");
+
+      var numberValue = null;
+      angular.forEach(angular.element(elem).children(), function(element) {
+            if(angular.element(element).hasClass('number')){
+                numberValue = angular.element(element).attr('number');
+            }
+      });
+      if(!numberValue){
+         return;
+      }
       var items = s.xList.filter(function( obj ) {
-        return +obj.number != +number;
+        return +obj.number != +numberValue;
       });
       s.lastNumber = s.lastNumber || [];
-      s.lastNumber.unshift(number);
+      s.lastNumber.unshift(numberValue);
       s.$apply(s.xList = items);
     };
   </script>
   <script src="scripts/vendor/angular.min.js"></script>
   <script src="scripts/vendor/ui-bootstrap.min.js"></script>
   <script src="scripts/vendor/ui-bootstrap-tpls.min.js"></script>
-  <script src="scripts/wilson-angular-isotope.js"></script>
+  <script src="scripts/wilsonic-angular-isotope.js"></script>
   <script src="scripts/myapp.js"></script>
 </body>
 </html>

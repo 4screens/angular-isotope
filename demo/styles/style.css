@@ -223,6 +223,13 @@ body {
   bottom: 0.5em;
 }
 
+.element .date {
+    font-size: 0.9em;
+    left: 0.5em;
+    bottom: 0.5em;
+}
+
+
 .element .number {
   font-size: 1.25em;
   font-weight: bold;
