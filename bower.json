@@ -1,10 +1,9 @@
 {
-    "name": "angular-isotope",
-    "main": ["dist/angular-isotope.js"],
+    "name": "wilsonic-angular-isotope",
+    "main": ["dist/wilsonic-angular-isotope.js"],
     "version": "0.0.8",
-    "homepage": "https://github.com/mankindsoftware/angular-isotope",
     "authors": [
-      "Mark Allen Hall <markallenhall@gmail.com>"
+      "wilSonic <will.streeter@nocsonic.com>"
     ],
     "dependencies": {
         "angular": "~1.0.7",
@@ -15,11 +14,10 @@
         "angular-scenario": "~1.0.7",
         "angular-bootstrap":"v0.11.0"
     },
-    "description": "AngularJS directives for Isotope by Metafizzy",
+    "description": "AngularJS directives for Isotope by Metafizzy with out JQuery",
     "keywords": [
-      "angular-isotope",
+      "wilsonic-angular-isotope",
       "isotope",
-      "jquery.isotope",
       "ng-isotope"
     ],
     "license": "GPL 3"

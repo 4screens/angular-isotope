@@ -17,6 +17,7 @@ module.exports = function(config) {
             'components/angular/angular.js',
             'components/angular-mocks/angular-mocks.js',
             'dist/angular-isotope.js',
+            'dist/wilsonic-angular-isotope.js',
             'test/unit/**/*.js'
         ],
 

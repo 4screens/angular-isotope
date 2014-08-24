@@ -1,12 +1,12 @@
 {
-    "author": "Mark Allen Hall",
-    "name": "angular-isotope",
-    "description": "AngularIsotope - Isotope directives library for AngularJS.",
+    "author": "Will  Streeter",
+    "name": "wilsonic-angular-isotope",
+    "description": "WilsonicAngularIsotope - Isotope is based on Mark Halls AngularIsotope. I have begun modifiying it to enable it to work without JQUERY",
     "version": "0.1.14",
-    "homepage": "http://mankindsoftware.github.com/angular-isotope",
+    "homepage": "https://github.com/willSonic/angular-isotope.git",
     "repository": {
       "type": "git",
-      "url": "git://github.com/mankindsoftware/angular-isotope.git"
+      "url": "git://https://github.com/willSonic/angular-isotope.git"
     },
     "dependencies": {},
     "devDependencies": {
