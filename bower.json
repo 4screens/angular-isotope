@@ -1,7 +1,7 @@
 {
-    "name": "wilsonic-angular-isotope",
-    "main": ["dist/wilsonic-angular-isotope.js"],
-    "version": "0.0.8",
+    "name": "4screens-angular-isotope",
+    "main": ["dist/angular-isotope.js"],
+    "version": "0.1.14",
     "authors": [
       "wilSonic <will.streeter@nocsonic.com>"
     ],
