@@ -1,7 +1,7 @@
 {
     "name": "4screens-angular-isotope",
     "main": ["dist/angular-isotope.js"],
-    "version": "0.1.14",
+    "version": "0.1.16",
     "authors": [
       "wilSonic <will.streeter@nocsonic.com>"
     ],
